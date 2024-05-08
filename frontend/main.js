@@ -1,5 +1,5 @@
 const root = document.getElementById('root')
-const API = 'http://localhost:1234'
+const API = 'http://localhost:4444'
 
 const fetchData = async () => {
   try {

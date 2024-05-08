@@ -2,7 +2,7 @@ services:
   frontend:
     build: ./frontend
     depends_on:
-      - backend
+      - proxy
     ports:
       - "4321:80"
 
@@ -13,4 +13,15 @@ services:
       - "1234:3000"
     volumes:
       - ./backend:/app
+    command: npm run start
+
+  proxy:
+    depends_on:
+      - backend
+    working_dir: /app
+    image: node:22-alpine
+    ports:
+      - "4444:4000"
+    volumes:
+      - ./frontend/proxy:/app
     command: npm run start
